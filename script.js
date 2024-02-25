@@ -5,7 +5,7 @@ const list = document.getElementById("list");
 const form = document.getElementById("form");
 const text = document.getElementById("text");
 const amount = document.getElementById("amount");
-
+const type = document.getElementById("type");
 // const dummyTransactions = [
 //   { id: 1, text: 'Salary', amount: 30000 },
 //   { id: 2, text: 'Flower', amount: -200 },
@@ -30,12 +30,12 @@ function generateID() {
 // Add transactions to DOM list
 function addTransactionDOM(transaction) {
     // Get sign
-    const sign = transaction.amount < 0 ? "-" : "+";
+    const sign = transaction.type === "Expense" ? "-" : "+";
 
     const item = document.createElement("li");
 
     // Add class based on value
-    item.classList.add(transaction.amount < 0 ? "minus" : "plus");
+    item.classList.add(transaction.type === "Expense" ? "minus" : "plus");
 
     item.innerHTML = `
       ${transaction.text} <span>${sign}${Math.abs(
@@ -53,12 +53,14 @@ function addTransaction(e) {
     e.preventDefault();
 
     if (text.value.trim() === "" || amount.value.trim() === "") {
-        alert("Please add a text and amount");
+        alert("Please fill all the Fields");
     } else {
         const transaction = {
             id: generateID(),
             text: text.value,
-            amount: +amount.value,
+            amount:
+                type.value === "Expense" ? -amount.value : Number(amount.value),
+            type: type.value,
         };
 
         transactions.push(transaction);
@@ -69,15 +71,21 @@ function addTransaction(e) {
 
         updateLocalStorage();
 
-        text.value = "";
+        text.value = "Salary";
         amount.value = "";
+        type.value = "Income";
+
+        // Scroll to the top of the page
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     }
 }
 
 // Update the balance, income and expense
 function updateValues() {
     const amounts = transactions.map((transaction) => transaction.amount);
-
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
     const income = amounts
@@ -108,6 +116,15 @@ function removeTransaction(id) {
 // Update local storage transactions
 function updateLocalStorage() {
     localStorage.setItem("transactions", JSON.stringify(transactions));
+}
+
+// Clear All Transactions
+function clearAllTransaction() {
+    transactions = [];
+    updateLocalStorage();
+    location.reload();
+
+    init();
 }
 
 // Init app

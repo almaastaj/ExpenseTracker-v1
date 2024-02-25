@@ -38,26 +38,38 @@
                 <h3>Add new transaction</h3>
                 <form id="form">
                     <div class="form-control">
-                        <label for="text">Text</label>
-                        <input
-                            type="text"
-                            id="text"
-                            placeholder="Enter text..."
-                        />
+                        <label for="text">Select Transaction Category:</label>
+                        <select name="text" id="text">
+                            <option value="Salary">Salary</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Groceries">Groceries</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="type">Select Transaction Type:</label>
+                        <select name="type" id="type">
+                            <option value="Income">Income</option>
+                            <option value="Expense">Expense</option>
+                        </select>
                     </div>
                     <div class="form-control">
                         <label for="amount" class="label-amount"
-                            >Amount : (negative value => expense, positive value
-                            => income)</label
+                            >Amount :</label
                         >
                         <input
                             type="number"
                             id="amount"
+                            min="0"
                             placeholder="Enter amount..."
                         />
                     </div>
                     <button class="btn">Add transaction</button>
                 </form>
+                <button class="btn" id="clear" onclick="clearAllTransaction()">
+                    Clear All Transcations
+                </button>
             </div>
 
             <script src="script.js"></script>

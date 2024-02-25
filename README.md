@@ -14,4 +14,4 @@ This project keeps track of income and expenses. Add or remove items and save da
 
 ## UI
 
-![Expense Tracker App](../ExpenseTracker-v1/Expense-Tracker.png)
+![Expense Tracker App](Expense-Tracker.png)

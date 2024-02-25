@@ -11,3 +11,7 @@ This project keeps track of income and expenses. Add or remove items and save da
 -   Add new transation and reflect in total
 -   Delete items from DOM
 -   Persist Data to local storage
+
+## UI
+
+![Expense Tracker App](/ExpenseTracker-v1/Expense-Tracker.png)

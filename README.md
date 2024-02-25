@@ -13,5 +13,3 @@ This project keeps track of income and expenses. Add or remove items and save da
 -   Persist Data to local storage
 
 ## UI
-
-![Expense Tracker App](Expense-Tracker.png)

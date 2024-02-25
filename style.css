@@ -95,6 +95,12 @@ h4 {
 label {
     display: inline-block;
     margin: 10px 0;
+    font-weight: bold;
+}
+
+.label-amount {
+    color: #2e0249;
+    font-weight: bold;
 }
 
 input[type="text"],
